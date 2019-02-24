@@ -1,1 +1,1 @@
-# vezba_tabela
+# rate-sum
