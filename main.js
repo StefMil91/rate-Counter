@@ -3,43 +3,43 @@ const firstSaldo = document.querySelector('.first-saldo');
 const secondSaldo = document.querySelector('.second-saldo');
 const thirdSaldo = document.querySelector('.third-saldo');
 
-var possibleSecondRate = 0;
-var possibleThirdRate = 0;
-var firstRateCounter = 0;
-var secondRateCounter = 0;
-var thirdRateCounter = 0;
+var possibleSecondSum = 0;
+var possibleThirdSum = 0;
+var firstRateSum = 0;
+var secondRateSum = 0;
+var thirdRateSum = 0;
 
 for(let i = 0; tableRow.length > i; i++){
     if(tableRow[i].querySelector('.placeno') != null){
-        firstRateCounter++;
+        firstRateSum += Number(tableRow[i].querySelector('.placeno').innerText);
     }
     
 }
 
 for(let i = 0; tableRow.length > i; i++){
+    
     if(tableRow[i].querySelectorAll('.placeno').length == 1){
-        possibleSecondRate++;
+        possibleSecondSum += Number(tableRow[i].querySelector('.neplaceno').innerText);
+        
     }
-}
-
-for(let i = 0; tableRow.length > i; i++){
-    if(tableRow[i].querySelectorAll('.placeno').length == 2){
-        secondRateCounter++;
+    
+    if(tableRow[i].querySelectorAll('.placeno').length > 1){
+        secondRateSum += Number(tableRow[i].querySelectorAll('.placeno')[1].innerText);
+        
     }
-}
-
-for(let i = 0; tableRow.length > i; i++){
+    
     if(tableRow[i].querySelectorAll('.placeno').length == 3){
-        thirdRateCounter++;
+        thirdRateSum += Number(tableRow[i].querySelectorAll('.placeno')[2].innerText);
+        
     }
-}
-
-for(let i = 0; tableRow.length > i; i++){
+    
     if(tableRow[i].querySelectorAll('.placeno').length > 1 && tableRow[i].querySelectorAll('.placeno').length < 3){
-        possibleThirdRate++;
+        possibleThirdSum += Number(tableRow[i].querySelector('.neplaceno').innerText);
     }
 }
 
-firstSaldo.innerHTML = firstRateCounter;
-secondSaldo.innerHTML = secondRateCounter + "<br>" + "(" + possibleSecondRate + ")";
-thirdSaldo.innerHTML = thirdRateCounter+ "<br>" + "(" + possibleThirdRate + ")";
+
+
+firstSaldo.innerHTML = firstRateSum;
+secondSaldo.innerHTML = secondRateSum + "<br>" + "(" + possibleSecondSum + ")";
+thirdSaldo.innerHTML = thirdRateSum + "<br>" + "(" + possibleThirdSum + ")";
